@@ -263,7 +263,9 @@ class FeedService extends Service
 
                 if ($existingFeed->getFullTextEnabled()) {
                     $scraperResult = $this->scraper->scrapeContent($item->getUrl());
-                    $item->setBody($scraperResult['html']);
+                    if ($scraperResult['status'] == 200) {
+                        $item->setBody($scraperResult['html']);
+                    }
                 }
 
                 try {
