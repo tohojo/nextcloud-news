@@ -57,6 +57,8 @@ class Item extends Entity implements IAPI, \JsonSerializable
     protected $unread = false;
     /** @var bool */
     protected $starred = false;
+    /** @var bool */
+    protected $fullTextFetchFailed = false;
 
     /**
      * @return int

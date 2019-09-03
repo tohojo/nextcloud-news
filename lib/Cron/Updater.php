@@ -50,6 +50,7 @@ class Updater extends Job
         ) {
             $this->updaterService->beforeUpdate();
             $this->updaterService->update();
+            $this->updaterService->rescrapeUnscraped();
             $this->updaterService->afterUpdate();
         }
     }

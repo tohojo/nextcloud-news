@@ -266,6 +266,9 @@ class FeedService extends Service
                     if ($scraperResult['status'] == 200) {
                         $item->setBody($scraperResult['html']);
                     }
+                    else {
+                        $item->setFullTextFetchFailed(true);
+                    }
                 }
 
                 try {

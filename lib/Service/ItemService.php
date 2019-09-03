@@ -319,4 +319,10 @@ class ItemService extends Service
     {
         $this->itemMapper->updateSearchIndices();
     }
+
+    public function rescrapeUnscraped()
+    {
+        $itemsToRescrape = $this->itemMapper->findAllWithFullTextFetchFailed($userId);
+        // TODO -> Refetch!
+    }
 }

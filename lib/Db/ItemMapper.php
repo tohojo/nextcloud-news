@@ -331,6 +331,13 @@ class ItemMapper extends NewsMapper
         return $this->findEntity($sql, [$userId, $guidHash, $feedId]);
     }
 
+    public function findAllWithFullTextFetchFailed($userId)
+    {
+        $params = [$userId];
+        $sql = $this->makeSelectQuery('AND `items`.`full_text_fetch_failed` = false ');
+        return $this->findEntities($sql, $params);
+    }
+
 
     /**
      * Delete all items for feeds that have over $threshold unread and not

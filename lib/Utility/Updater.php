@@ -54,4 +54,9 @@ class Updater
     {
         $this->itemService->autoPurgeOld();
     }
+
+    public function rescrapeUnscraped()
+    {
+        $this->itemService->rescrapeUnscraped();
+    }
 }
