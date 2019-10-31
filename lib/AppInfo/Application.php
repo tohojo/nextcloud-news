@@ -18,6 +18,7 @@ use FeedIo\FeedIo;
 use HTMLPurifier;
 use HTMLPurifier_Config;
 use Favicon\Favicon;
+use Graby\Graby;
 
 use OCA\News\Config\FetcherConfig;
 use OCA\News\Utility\PsrLogger;
@@ -41,6 +42,7 @@ use OCA\News\Fetcher\FeedFetcher;
 use OCA\News\Fetcher\Fetcher;
 use OCA\News\Fetcher\YoutubeFetcher;
 use OCA\News\Utility\ProxyConfigParser;
+use OCA\News\Scraper\Scraper;
 
 /**
  * Class Application
@@ -192,6 +194,12 @@ class Application extends App
             $fetcher->registerFetcher($c->query(YoutubeFetcher::class));
             $fetcher->registerFetcher($c->query(FeedFetcher::class));
             return $fetcher;
+        });
+
+        $container->registerService(Scraper::class, function (IContainer $c): Scraper {
+            $graby = new Graby();
+            $scraper = new Scraper($graby);
+            return $scraper;
         });
     }
 }
